@@ -1,10 +1,10 @@
 import requests, zipfile, io
-r = requests.get("https://firms.modaps.eosdis.nasa.gov/active_fire/c6/shapes/zips/MODIS_C6_SouthEast_Asia_24h.zip")
+r = requests.get("https://firms.modaps.eosdis.nasa.gov/active_fire/c6/shapes/zips/MODIS_C6_SouthEast_Asia_48h.zip")
 z = zipfile.ZipFile(io.BytesIO(r.content))
 z.extractall()
  #I think this is getting the data from the NASA website
 import shapefile
-reader = shapefile.Reader("MODIS_C6_SouthEast_Asia_24h.shp")
+reader = shapefile.Reader("MODIS_C6_SouthEast_Asia_48h.shp")
 fields = reader.fields[1:]
 field_names=[field[0] for field in fields]
 buffer = []
